@@ -16,7 +16,7 @@ class Leaf {
 
   int x;
   int y;
- 
+
   Leaf* parent;
   std::vector<Leaf*> children;
 
@@ -47,6 +47,10 @@ class Leaf {
       SDL_RenderDrawLine(renderer, x, y, children[i]->x, children[i]->y);
       children[i]->draw(renderer);
     }
+  }
+
+  void draw(Leaf* dst, SDL_Renderer* renderer) {
+    SDL_RenderDrawLine(renderer, x, y, dst->x, dst->y);
   }
 
   void push_back(int x0, int y0) {

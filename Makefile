@@ -6,5 +6,7 @@ docker-build:
 
 build:
 	g++ src/main.cpp \
+		-std=c++11 \
+		-pthread \
 		-lSDL2 \
 		-o rapid-random-tree
