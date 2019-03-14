@@ -21,7 +21,7 @@ class RRT {
     while (iterations < max_iterations) {
       Leaf* random = new Leaf(std::rand() % max_x, std::rand() % max_y);
       Leaf* closest = tree->closest_to(random);
-      if (closest->x == random->x && closest->y == random->y) {
+      if (*closest == *random) {
         continue;
       }
       double norm = closest->distance_to(random);

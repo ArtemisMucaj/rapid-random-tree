@@ -31,6 +31,10 @@ class Leaf {
 
   Leaf(int x0, int y0, Leaf* parent0): x(x0), y(y0), parent(parent0) {}
 
+  bool operator==(const Leaf& curr) {
+    return x == curr.x && y == curr.y;
+  }
+
   std::string to_string() {
     std::ostringstream oss;
     oss << "(" << x << " ," << y << ")";
