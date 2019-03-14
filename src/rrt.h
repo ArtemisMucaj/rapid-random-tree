@@ -9,17 +9,17 @@
 namespace RRT {
 
 class RRT {
-  int iterations;
+  int iteration;
   Leaf* tree;
 
   public:
 
-  RRT(Leaf* t0): iterations(0), tree(t0) {}
+  RRT(Leaf* t0): iteration(0), tree(t0) {}
 
-  void build(int max_iterations, int max_x, int max_y) {
+  void build(int iter, int size_x, int size_y) {
     std::srand(time(0));
-    while (iterations < max_iterations) {
-      Leaf* random = new Leaf(std::rand() % max_x, std::rand() % max_y);
+    while (iteration < iter) {
+      Leaf* random = new Leaf(std::rand() % size_x, std::rand() % size_y);
       Leaf* closest = tree->closest_to(random);
       if (*closest == *random) {
         continue;
@@ -30,7 +30,7 @@ class RRT {
         (closest->y + (DELTA/norm) * (random->y - closest->y))
       );
       closest->push_back(leaf);
-      ++iterations;
+      ++iteration;
     }
   }
 };
