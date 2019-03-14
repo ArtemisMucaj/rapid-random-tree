@@ -24,11 +24,11 @@ class RRT {
       double norm = closest->distance_to(random);
       // Skip when random = closest
       if (norm == 0) {
-	continue;
+        continue;
       }
       Leaf* leaf= new Leaf(
         (closest->x + (DELTA/norm) * (random->x - closest->x)),
-	(closest->y + (DELTA/norm) * (random->y - closest->y))
+        (closest->y + (DELTA/norm) * (random->y - closest->y))
       );
       closest->push_back(leaf);
       ++iterations;
