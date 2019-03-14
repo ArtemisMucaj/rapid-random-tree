@@ -21,11 +21,10 @@ class RRT {
     while (iterations < max_iterations) {
       Leaf* random = new Leaf(std::rand() % max_x, std::rand() % max_y);
       Leaf* closest = tree->closest_to(random);
-      double norm = closest->distance_to(random);
-      // Skip when random = closest
-      if (norm == 0) {
+      if (closest->x == random->x && closest->y == random->y) {
         continue;
       }
+      double norm = closest->distance_to(random);
       Leaf* leaf= new Leaf(
         (closest->x + (DELTA/norm) * (random->x - closest->x)),
         (closest->y + (DELTA/norm) * (random->y - closest->y))
