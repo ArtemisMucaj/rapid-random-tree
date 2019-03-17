@@ -10,14 +10,14 @@ namespace RRT {
 class Node {
   public:
   
-  void* payload;
+  Leaf* val;
   Node* next;
 
-  Node(): payload(NULL), next(NULL) {}
+  Node(): val(NULL), next(NULL) {}
 
-  Node(void* payload0, Node* next0): payload(payload0), next(next0) {}
+  Node(Leaf* val0, Node* next0): val(val0), next(next0) {}
 
-  Node* unshift(void* val) {
+  Node* unshift(Leaf* val) {
     Node* tmp = new Node(val, this);
     return tmp;
   }
@@ -27,11 +27,12 @@ class Node {
     Node* next = NULL;
     while(curr->next != NULL) {
       next = curr->next;
-      SDL_SetRenderDrawColor(renderer, 255, 0, 0, SDL_ALPHA_OPAQUE);
-      Leaf* l1 = (Leaf*) curr->payload;
-      Leaf* l2 = (Leaf*) next->payload;
-      SDL_RenderDrawLine(renderer, l1->x, l1->y, l2->x, l2->y);
+      Leaf* l1 = curr->val;
+      Leaf* l2 = next->val;
       curr = next;
+      // Draw
+      SDL_SetRenderDrawColor(renderer, 255, 0, 0, SDL_ALPHA_OPAQUE);
+      SDL_RenderDrawLine(renderer, l1->x, l1->y, l2->x, l2->y);
     }
   }
 };
