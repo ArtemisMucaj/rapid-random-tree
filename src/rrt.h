@@ -5,6 +5,7 @@
 
 #include <iostream>
 #include "leaf.h"
+#include "node.h"
 
 namespace RRT {
 
@@ -32,6 +33,16 @@ class RRT {
       closest->push_back(leaf);
       ++iteration;
     }
+  }
+
+  Node* path_to(int x, int y) {
+    Leaf* curr = tree->closest_to(new Leaf(x, y));
+    Node* path = new Node(curr, NULL);
+    while (curr->parent != NULL) {
+      path = path->unshift(curr->parent);
+      curr = curr->parent;
+    }
+    return path;
   }
 };
 

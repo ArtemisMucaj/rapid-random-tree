@@ -28,6 +28,9 @@ int main() {
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, SDL_ALPHA_OPAQUE);
     // Draw tree
     tree->draw(renderer);
+    // Draw path
+    RRT::Node* path = b->path_to(50, 750);
+    path->draw(renderer);
 
     SDL_RenderPresent(renderer);
     if (SDL_PollEvent(&event)) {
