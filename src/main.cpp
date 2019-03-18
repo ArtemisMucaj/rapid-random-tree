@@ -19,6 +19,7 @@ int main() {
   }
 
   std::thread t1(&RRT::RRT::build, b, MAX_POINTS, SIZE_X, SIZE_Y);
+  int x = std::rand() % SIZE_X, y = std::rand() % SIZE_Y;
 
   SDL_bool cond = SDL_FALSE;
   while (!cond) {
@@ -29,7 +30,7 @@ int main() {
     // Draw tree
     tree->draw(renderer);
     // Draw path
-    RRT::Node* path = b->path_to(50, 750);
+    RRT::Node* path = b->path_to(x, y);
     path->draw(renderer);
 
     SDL_RenderPresent(renderer);
