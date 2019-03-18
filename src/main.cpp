@@ -19,6 +19,8 @@ int main() {
   }
 
   std::thread t1(&RRT::RRT::build, b, MAX_POINTS, SIZE_X, SIZE_Y);
+  
+  std::srand(time(0));
   int x = std::rand() % SIZE_X, y = std::rand() % SIZE_Y;
 
   SDL_bool cond = SDL_FALSE;
