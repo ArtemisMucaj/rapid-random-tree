@@ -15,6 +15,8 @@ class RRT {
 
   public:
 
+  RRT(): iteration(0), tree(NULL) {}
+
   RRT(Leaf* t0): iteration(0), tree(t0) {}
 
   void build(int iter, int size_x, int size_y) {
@@ -43,6 +45,14 @@ class RRT {
       curr = curr->parent;
     }
     return path;
+  }
+
+  static void serialize(RRT* val) {
+    return;
+  }
+
+  static RRT* unserialize() {
+    return new RRT();
   }
 };
 
